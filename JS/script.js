@@ -77,12 +77,12 @@ function playButton(button) {
 
 function playSeq(comp) {
   // Plays the given sequence by lighting buttons and playing sound
-  
+
   // Disables buttons while computer is playing sequence
   $(".color").each(function(index, element) {
     $(element).addClass("disabled");
   });
-  
+
   // Loop function to set a delay between playing each move
   var i = 0;
   function myLoop () {
@@ -95,8 +95,8 @@ function playSeq(comp) {
     }, 1000)
   }
 
-  myLoop(); 
-  
+  myLoop();
+
   // Re-enables buttons
   $(".color").each(function(index, element) {
     $(element).removeClass("disabled");
@@ -110,7 +110,7 @@ function checkSeq(comp, user) {
     //console.log("Too many user clicks");
     return false;
   }
-  
+
   for (var i = 0; i < user.length; i++) {
     if (user[i] != comp[i]) {
       //console.log("Wrong move");
@@ -172,7 +172,7 @@ function resetGame(){
 }
 
 
-// jQuery setup function
+// jQuery closure
 
 $(function(){
   // Start button
@@ -182,49 +182,49 @@ $(function(){
       $(this).addClass("disabled");
     }
   });
-  
+
   // Strict button
   $("#strict").on("click", function() {
     strictFlag = true;
   });
-  
+
   // Reset button
   $("#reset").on("click", function() {
     resetGame();
     compPlay();
   });
-  
+
   // Color buttons
   $(".green").on("click", function(){
     if(!$(this).hasClass("disabled")) {
       playButton('G');
       userSeq.push('G');
       userPlay(compSeq, userSeq);
-    } 
+    }
   });
-  
+
   $(".red").on("click", function(){
     if(!$(this).hasClass("disabled")) {
       playButton('R');
       userSeq.push('R');
       userPlay(compSeq, userSeq);
-    } 
+    }
   });
-  
+
   $(".yellow").on("click", function(){
     if(!$(this).hasClass("disabled")) {
       playButton('Y');
       userSeq.push('Y');
       userPlay(compSeq, userSeq);
-    } 
+    }
   });
-  
+
   $(".blue").on("click", function(){
     if(!$(this).hasClass("disabled")) {
       playButton('B');
       userSeq.push('B');
       userPlay(compSeq, userSeq);
-    } 
+    }
   });
-  
+
 }); // End jQuery function
